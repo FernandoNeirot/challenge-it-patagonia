@@ -3,6 +3,7 @@ import PrivateRoute from "./shared/components/PrivateRoute";
 import HomePage from "./pages/home/presentation";
 import LoginPage from "./pages/login/presentation";
 import HeaderComponent from "./shared/components/header";
+import { NotFound } from "./pages/NotFound/presentation";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
 
         <Routes>
           <Route path="login" element={<LoginPage />} />
+          <Route path="*" element={<NotFound/>} />
           <Route
             path="/"
             element={
