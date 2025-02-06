@@ -6,12 +6,13 @@ import Card from "./components/Card";
 import { IPhrases } from "../../../shared/_architecture/domain/phrases.interfaces";
 import { IStateRedux } from "../../../shared/_architecture/domain/state.interface";
 import Loading from "../../../shared/components/form/loading";
+import { AppDispatch } from "../../../redux/store";
 
 const HomePage = () => {
-  const dispatch = useDispatch<any>();
+  const dispatch = useDispatch<AppDispatch>();
   const { userId } = useAuth();
   const phrasesData = useSelector((state: IStateRedux) => state.phrases) ?? null;
-  const search = useSelector((state: IStateRedux) => state.search).search ?? null;
+  const search = useSelector((state: IStateRedux) => state.global).search ?? null;
   
   useEffect(() => {
     dispatch(getPhrasesSlider({ id: userId }));

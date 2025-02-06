@@ -2,14 +2,15 @@ import { useEffect, useState } from "react";
 import InputComponent from "./form/Input";
 import { FiSearch } from "react-icons/fi";
 import { useDispatch } from "react-redux";
-import { addsearch } from "../../redux/sliders/search";
+import { changeSearch } from "../../redux/sliders/global";
+import { AppDispatch } from "../../redux/store";
 
 const SearchPhrases = () => {
-  const dispatch = useDispatch<any>();
+  const dispatch = useDispatch<AppDispatch>();
   const [search, setSearch] = useState<string>("");
 
   useEffect(() => {
-    dispatch(addsearch({ search: search }));
+    dispatch(changeSearch({ search: search }));
   }, [search]);
 
   return (

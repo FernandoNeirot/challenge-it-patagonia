@@ -1,17 +1,16 @@
  
 import { useEffect, useState } from 'react'
 import useLogin from '../application/useLogin';
-import { LOCAL_STORAGE } from '../../../shared/utils/localStorage';
 import InputComponent from '../../../shared/components/form/Input';
 import Loading from '../../../shared/components/form/loading';
 import ButtonComponent from '../../../shared/components/form/button';
+import useAuth from '../../../hooks/useAuth';
 
 const LoginPage = () => {
   const [user, setUser] = useState<string>("");
   const [pass, setPass] = useState<string>("");
   const { isError, loading, login, isAuth } = useLogin();
-  
-
+  const {isAuthApp} = useAuth();
   const handleLogin = async () => {
     login(user, pass);
   };
@@ -22,9 +21,7 @@ const LoginPage = () => {
   }, [isAuth]);
 
   useEffect(() => {
-    // aca solo valido que exista el token en el localstorage
-    // teniendo el jwt se podria consultar a un servicio para que lo revalide por seguridad
-    if(LOCAL_STORAGE.get(LOCAL_STORAGE.constants.JWT))
+    if(isAuthApp)
       window.location.assign("/");
   }, []);
 

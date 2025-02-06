@@ -10,19 +10,20 @@ import useAuth from "../../../../hooks/useAuth";
 import Loading from "../loading";
 import { useDispatch } from "react-redux";
 import { getPhrasesSlider } from "../../../../redux/sliders/phrases/get";
+import { changeModalCreatePhrases } from "../../../../redux/sliders/global";
+import { AppDispatch } from "../../../../redux/store";
 
-interface CreatePhraseProps {
-  handleModalCreatePhrase: () => void;
-}
-
-const CreatePhraseModal = ({ handleModalCreatePhrase }: CreatePhraseProps) => {
-  const dispatch = useDispatch<any>();
+const CreatePhraseModal = () => {
+  const dispatch = useDispatch<AppDispatch>();
   const{userId }=useAuth();
   const [phrase, setPhrase] = useState<string>("");
   const [loading, setLoading] = useState(false)
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setPhrase(e.target.value);
   };
+  const handleClose = () => {
+    dispatch(changeModalCreatePhrases());
+  }
   const handleCreatePhrase = async() => {
     const request: IPhrases = {
       category: "general",
@@ -37,7 +38,7 @@ const CreatePhraseModal = ({ handleModalCreatePhrase }: CreatePhraseProps) => {
     if (res) {
       alert("Frase creada");
       dispatch(getPhrasesSlider({ id: userId }));
-      handleModalCreatePhrase();
+      
     }else{
       alert("Error al crear frase");
     }
@@ -48,7 +49,7 @@ const CreatePhraseModal = ({ handleModalCreatePhrase }: CreatePhraseProps) => {
       {
         loading && <Loading  />
       }
-      <Modal title="Crear frase" close={handleModalCreatePhrase}>
+      <Modal title="Crear frase" close={handleClose}>
         <div className="">
           <TextareaComponent
             name="title"

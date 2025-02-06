@@ -1,5 +1,6 @@
 import moment from "moment";
 import useAuth from "../../../../hooks/useAuth";
+import HighlightedText from "../../../../shared/components/HighlightedText";
 
 interface CardProps {
   description: string;
@@ -16,7 +17,7 @@ const Card = ({ description, created }: CardProps) => {
           scrollbarWidth: "thin",
         }}
       >
-        {description}
+        <HighlightedText text={description}/>
       </div>
       <div className="mt-4">
         <div>

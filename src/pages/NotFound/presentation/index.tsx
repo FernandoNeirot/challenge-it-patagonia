@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router";
+import ButtonComponent from "../../../shared/components/form/button";
 
 export const NotFound = () => {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ export const NotFound = () => {
       <h1 className='text-red-300 font-bold text-4xl mb-10'>Seccion no encontrada</h1>
       
       <p>Por favor, contacta al administrador si crees que esto es un error.</p>
-      <button className=' bg-blue-950 py-2 px-4 text-cyan-50 mt-10 rounded-xl' onClick={() => navigate('/') }>Volver al inicio</button>
+      <ButtonComponent text="Volver al inicio" className=' bg-blue-950 py-2 px-4 text-cyan-50 mt-10 rounded-xl' onClick={() => navigate('/') }/>
       </div>
     </div>
   )

@@ -13,8 +13,14 @@ export interface IPhraseResponse{
 export interface ISearch{
   search: string;
 }
+export interface IGlobal{
+  search: string;
+  openModalCreatePhrase: boolean;
+  openMobileMenu: boolean;
+}
 export interface IStateRedux {
   user: IUser;
   phrases: IPhraseResponse;
   search: ISearch;
+  global:IGlobal
 }

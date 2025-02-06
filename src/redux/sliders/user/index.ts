@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { LOCAL_STORAGE } from "../../../shared/utils/localStorage";
-
+// recupero datos de session del localstorage
 const user = LOCAL_STORAGE.get(LOCAL_STORAGE.constants.JWT);
 
 const initialState = {

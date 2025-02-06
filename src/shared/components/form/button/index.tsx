@@ -10,7 +10,7 @@ interface ButtonProps {
 const ButtonComponent = ({ text, onClick,background="bg-blue-500",className }: ButtonProps) => {
   return (
     <button
-      className={`${background} text-white font-bold py-1 px-4 rounded-lg ${className}`}
+      className={`${background} text-white font-bold py-1 px-4 rounded-lg cursor-pointer ${className}`}
       onClick={onClick}
     >
       {text}
