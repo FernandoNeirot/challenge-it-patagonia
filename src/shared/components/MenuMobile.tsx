@@ -57,7 +57,7 @@ const MenuMobile = () => {
           }`}
           style={{ zIndex: 120 }}
         >
-          <div className="w-full text-white border-b-2 font-bold border-white pb-2">
+          <div className="w-full mt-16 text-white border-b-2 font-bold border-white pb-2">
             hola, <br />
             {userName}
           </div>
