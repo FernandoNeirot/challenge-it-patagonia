@@ -2,8 +2,6 @@ import { useNavigate } from "react-router";
 import { LOCAL_STORAGE } from "../../utils/localStorage";
 import { useEffect, useState } from "react";
 import useLocalStorage from "../../../hooks/useLocalStorage";
-import PortalToMain from "../PortalToMain";
-import Modal from "../form/modal";
 import CreatePhraseModal from "../form/createPhrase";
 
 const HeaderComponent = () => {

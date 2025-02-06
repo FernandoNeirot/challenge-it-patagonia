@@ -1,4 +1,4 @@
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../utils/configFirebase";
 import { IPhrases, ResponseGetPhrases } from "../domain/phrases.interfaces";
 
@@ -29,5 +29,15 @@ export const apiGetPhrases = async (id:string): Promise<ResponseGetPhrases> => {
       data: null,
       error: { isError: true, status: 404, message: "Error al recuperar datos" },
     };
+  }
+};
+
+export const apiCreatePhrase = async (data: IPhrases): Promise<boolean> => {  
+  try{
+    const docsRef = collection(db, "PHRASES");
+    await addDoc(docsRef, data);
+    return true;
+  }catch{
+    return false;
   }
 };

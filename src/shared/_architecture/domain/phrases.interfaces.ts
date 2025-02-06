@@ -1,8 +1,12 @@
 import { IError } from "./error.interface";
 
 export interface IPhrases{
-  id:string;
+  id?:string;
   description:string;
+  userId:string;
+  created:string;
+  deleted:boolean;
+  category?:string;
 }
 
 export interface ResponseGetPhrases {

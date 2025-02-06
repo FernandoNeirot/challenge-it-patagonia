@@ -11,7 +11,7 @@ interface InputProps {
 const TextareaComponent = (data: InputProps) => {
   return (
     <textarea
-      className="text-black w-full p-2 my-2 border border-blue-500 rounded-lg"      
+      className="text-white w-full p-2 my-2 border border-blue-200 rounded-lg min-h-[150px]"      
       {...data}
     />
   );
