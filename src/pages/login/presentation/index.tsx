@@ -26,7 +26,7 @@ const LoginPage = () => {
   }, []);
 
   return (
-    <div className="relative flex flex-col items-center justify-center h-screen mx-5" style={{
+    <div className="relative flex flex-col items-center justify-center h-screen" style={{
       backgroundImage: 'url("https://ddigitals.net/wp-content/uploads/2021/09/estrategia-contenido-seo.jpg")',
       backgroundSize: "cover",
       backgroundPosition: "center",
