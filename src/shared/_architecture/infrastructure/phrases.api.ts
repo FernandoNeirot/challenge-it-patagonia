@@ -1,4 +1,4 @@
-import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import { addDoc, collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
 import { db } from "../../utils/configFirebase";
 import { IPhrases, ResponseGetPhrases } from "../domain/phrases.interfaces";
 
@@ -22,8 +22,8 @@ export const apiGetPhrases = async (id:string): Promise<ResponseGetPhrases> => {
       };
     }
     return { data: array, error: null };
-  } catch (e) {
-    console.log("error", e);
+  } catch {
+
     return {
       data: null,
       error: { isError: true, status: 404, message: "Error al recuperar datos" },
@@ -35,6 +35,33 @@ export const apiCreatePhrase = async (data: IPhrases): Promise<boolean> => {
   try{
     const docsRef = collection(db, "PHRASES");
     await addDoc(docsRef, data);
+    return true;
+  }catch{
+    return false;
+  }
+};
+
+
+export const apiUpdatePhrase = async (
+  data: Partial<IPhrases>,
+  id: string
+) => {
+try{
+  const docRef = doc(db, "PHRASES", id);
+  await updateDoc(docRef, data);
+  return true;
+}catch{
+  return false;
+}
+};
+
+export const apiDeletePhrase = async (  
+  data: Partial<IPhrases>,
+  id: string
+) => {
+  try{
+    const docRef = doc(db, "PHRASES", id);
+    await updateDoc(docRef, data);
     return true;
   }catch{
     return false;

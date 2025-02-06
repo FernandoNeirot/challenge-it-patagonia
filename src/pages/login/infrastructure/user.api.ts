@@ -33,8 +33,7 @@ export const apiLoginFirebase = async ({
       };
     }
     return { data: {...array[0],password:"********"}, error: null };
-  } catch (e) {
-    console.log("error", e);
+  } catch {
     return {
       data: null,
       error: { isError: true, status: 401, message: "Error de credenciales" },

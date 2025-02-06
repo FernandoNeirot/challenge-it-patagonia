@@ -6,7 +6,7 @@ import LoginPage from "./pages/login/presentation";
 import { NotFound } from "./pages/NotFound/presentation";
 import { useSelector } from "react-redux";
 import { IStateRedux } from "./shared/_architecture/domain/state.interface";
-import CreatePhraseModal from "./shared/components/form/createPhrase";
+import CreatePhraseModal from "./shared/components/form/createEditPhrase";
 import HeaderComponent from "./shared/components/Header";
 import MenuMobile from "./shared/components/MenuMobile";
 

@@ -17,6 +17,7 @@ export interface IGlobal{
   search: string;
   openModalCreatePhrase: boolean;
   openMobileMenu: boolean;
+  phraseSelected: IPhrases | null;
 }
 export interface IStateRedux {
   user: IUser;
