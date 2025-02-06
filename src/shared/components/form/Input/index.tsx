@@ -1,18 +1,23 @@
-import React from "react";
+import React from 'react';
 
-interface InputProps {
-  name?: string;
+interface InputComponentProps {
+  name: string;
   value: string;
-  placeholder: string;
-  type?: "text" | "password" | "email" | "number";
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder: string;
+  type?: string;
+  className?: string;
 }
 
-const InputComponent = (data: InputProps) => {
+const InputComponent: React.FC<InputComponentProps> = ({className, name, value, onChange, placeholder, type = "text" }) => {
   return (
     <input
-      className="text-black w-full p-2 my-2 border border-blue-500 rounded-lg"
-      {...data}
+      name={name}
+      value={value}
+      onChange={onChange}
+      placeholder={placeholder}
+      type={type}
+      className={`${className} w-full p-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
     />
   );
 };

@@ -2,9 +2,9 @@ import { IError } from "../../../shared/_architecture/domain/error.interface";
 
 export interface IUser {
   id: string;
+  user: string
   userName: string;
   password: string;
-  userTypeId: string;
 }
 
 export interface ResponseApiLogin {

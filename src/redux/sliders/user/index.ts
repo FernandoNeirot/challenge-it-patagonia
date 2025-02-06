@@ -5,8 +5,8 @@ const user = LOCAL_STORAGE.get(LOCAL_STORAGE.constants.JWT);
 
 const initialState = {
   id: user?.id || "",
+  user: user?.user || "",
   userName: user?.userName || "",
-  userTypeId: user?.userTypeId || "",
 };
 
 export const userSlice = createSlice({
@@ -14,10 +14,11 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     addUser: (state, action) => {
-      const { id, userName, userTypeId } = action.payload;
+      const { id, user,userName } = action.payload;
       state.id = id;
+      state.user = user;
       state.userName = userName;
-      state.userTypeId = userTypeId;
+
     },
   },
 });

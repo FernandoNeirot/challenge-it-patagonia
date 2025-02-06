@@ -3,6 +3,8 @@ import { LOCAL_STORAGE } from "../../utils/localStorage";
 import { useEffect, useState } from "react";
 import useLocalStorage from "../../../hooks/useLocalStorage";
 import CreatePhraseModal from "../form/createPhrase";
+import SearchPhrases from "../SearchPhrases";
+import ButtonComponent from "../form/button";
 
 const HeaderComponent = () => {
   const navigate = useNavigate();
@@ -59,7 +61,7 @@ const HeaderComponent = () => {
             style={{ zIndex: 10 }}
           >
             <div
-              className="flex items-center"
+              className="flex items-center w-full"
               onClick={() => handleChangePage("/")}
             >
               <img
@@ -67,27 +69,20 @@ const HeaderComponent = () => {
                 alt="logo"
                 className={`${isMenuFixed ? "h-8 w-8" : "h-16 w-16"}`}
               />
-              <div className={`ml-4 ${isMenuFixed ? "flex space-x-2" : ""}`}>
+              <div className={`ml-4 min-w-[90px] ${isMenuFixed ? "flex space-x-2" : ""}`}>
                 <p className="text-md font-bold">Gestion</p>
                 <p className="text-md font-bold">de Frases</p>
               </div>
+              <SearchPhrases />
             </div>
-            <div>
+
+            <div className="ml-2 min-w-[200px] flex items-center justify-end mt-1">
               {jwt ? (
-                <>
-                  <button
-                    onClick={handleModalCreatePhrase}
-                    className="mr-5 border rounded-xl py-1 hover:bg-slate-700 px-3"
-                  >
-                    Crear frase
-                  </button>
-                  <button
-                    onClick={handleLogout}
-                    className="mr-5 border rounded-xl py-1 hover:bg-slate-700 px-3"
-                  >
-                    Salir
-                  </button>
-                </>
+                <div className="flex justify-end items-center">
+                  <ButtonComponent  onClick={handleModalCreatePhrase} text="Crear frase" />                 
+                  <ButtonComponent  onClick={handleLogout} text="Salir" className="ml-2" />                 
+                  
+                </div>
               ) : (
                 <button
                   onClick={() => handleChangePage("login")}

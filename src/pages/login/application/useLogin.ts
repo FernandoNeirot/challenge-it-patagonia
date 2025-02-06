@@ -19,7 +19,7 @@ const useLogin = () => {
       if (!response || response?.error?.isError ) setIsError(true);
       else {
         LOCAL_STORAGE.set(LOCAL_STORAGE.constants.JWT, JSON.stringify(response.data) || "");
-        dispatch(addUser({ id: response.data?.id, userName: response.data?.userName, userTypeId: response.data?.userTypeId }));
+        dispatch(addUser({ id: response.data?.id,user:response.data?.user, userName: response.data?.userName }));
         setIsAuth(true);
       }
     } catch {

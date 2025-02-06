@@ -8,15 +8,18 @@ import Modal from "../modal";
 import TextareaComponent from "../textarea";
 import useAuth from "../../../../hooks/useAuth";
 import Loading from "../loading";
+import { useDispatch } from "react-redux";
+import { getPhrasesSlider } from "../../../../redux/sliders/phrases/get";
 
 interface CreatePhraseProps {
   handleModalCreatePhrase: () => void;
 }
 
 const CreatePhraseModal = ({ handleModalCreatePhrase }: CreatePhraseProps) => {
+  const dispatch = useDispatch<any>();
+  const{userId }=useAuth();
   const [phrase, setPhrase] = useState<string>("");
   const [loading, setLoading] = useState(false)
-  const {userId}= useAuth();
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setPhrase(e.target.value);
   };
@@ -33,6 +36,7 @@ const CreatePhraseModal = ({ handleModalCreatePhrase }: CreatePhraseProps) => {
     setLoading(false);
     if (res) {
       alert("Frase creada");
+      dispatch(getPhrasesSlider({ id: userId }));
       handleModalCreatePhrase();
     }else{
       alert("Error al crear frase");

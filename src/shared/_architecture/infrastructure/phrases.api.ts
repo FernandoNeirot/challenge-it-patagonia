@@ -15,7 +15,6 @@ export const apiGetPhrases = async (id:string): Promise<ResponseGetPhrases> => {
       data.id = doc.id;
       array.push(data as IPhrases);
     });
-    console.log(array)
     if (array.length === 0) {
       return {
         data: null,
