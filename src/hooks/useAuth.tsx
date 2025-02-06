@@ -5,6 +5,7 @@ const useAuth = () => {
   return {
     isAuth: !!user?.id,
     userId: user?.id,
+    userName: user?.name,
   }
 }
 
