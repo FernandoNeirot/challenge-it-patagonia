@@ -5,9 +5,11 @@ import useLocalStorage from "../../../hooks/useLocalStorage";
 import CreatePhraseModal from "../form/createPhrase";
 import SearchPhrases from "../SearchPhrases";
 import ButtonComponent from "../form/button";
+import useResize from "../../../hooks/useResize";
 
 const HeaderComponent = () => {
   const navigate = useNavigate();
+  const width = useResize();
   const { value: jwt } = useLocalStorage({ key: LOCAL_STORAGE.constants.JWT });
   const [activeCreateModal, setActiveCreateModal] = useState(false);
   const [isMenuFixed, setIsMenuFixed] = useState(false);
@@ -69,29 +71,40 @@ const HeaderComponent = () => {
                 alt="logo"
                 className={`${isMenuFixed ? "h-8 w-8" : "h-16 w-16"}`}
               />
-              <div className={`ml-4 min-w-[90px] ${isMenuFixed ? "flex space-x-2" : ""}`}>
+              <div className={`ml-4 min-w-[90px] `}>
                 <p className="text-md font-bold">Gestion</p>
                 <p className="text-md font-bold">de Frases</p>
               </div>
               <SearchPhrases />
             </div>
-
-            <div className="ml-2 min-w-[200px] flex items-center justify-end mt-1">
-              {jwt ? (
-                <div className="flex justify-end items-center">
-                  <ButtonComponent  onClick={handleModalCreatePhrase} text="Crear frase" />                 
-                  <ButtonComponent  onClick={handleLogout} text="Salir" className="ml-2" />                 
-                  
-                </div>
-              ) : (
-                <button
-                  onClick={() => handleChangePage("login")}
-                  className="mr-5 border rounded-xl py-1 hover:bg-slate-700 px-3"
-                >
-                  Ingresar
-                </button>
-              )}
-            </div>
+            {width > 600 ? (
+              <div className="ml-2 min-w-[200px] flex items-center justify-end mt-1">
+                {jwt ? (
+                  <div className="flex justify-end items-center">
+                    <ButtonComponent
+                      onClick={handleModalCreatePhrase}
+                      text="Crear frase"
+                    />
+                    <ButtonComponent
+                      onClick={handleLogout}
+                      text="Salir"
+                      className="ml-2"
+                    />
+                  </div>
+                ) : (
+                  <button
+                    onClick={() => handleChangePage("login")}
+                    className="mr-5 border rounded-xl py-1 hover:bg-slate-700 px-3"
+                  >
+                    Ingresar
+                  </button>
+                )}
+              </div>
+            ) : (
+              <div className="ml-2 flex items-center justify-end mt-1">
+                hola
+              </div>
+            )}
           </div>
         </>
       )}
