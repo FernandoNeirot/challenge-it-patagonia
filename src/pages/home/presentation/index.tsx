@@ -4,9 +4,9 @@ import { getPhrasesSlider } from "../../../redux/sliders/phrases/get";
 import useAuth from "../../../hooks/useAuth";
 import Card from "./components/Card";
 import { IPhrases } from "../../../shared/_architecture/domain/phrases.interfaces";
-import { IStateRedux } from "../../../shared/_architecture/domain/state.interface";
+import { AppDispatch, IStateRedux } from "../../../shared/_architecture/domain/state.interface";
 import Loading from "../../../shared/components/form/loading";
-import { AppDispatch } from "../../../redux/store";
+
 
 const HomePage = () => {
   const dispatch = useDispatch<AppDispatch>();

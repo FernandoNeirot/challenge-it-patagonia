@@ -1,3 +1,4 @@
+import store from "../../../redux/store";
 import { IPhrases } from "./phrases.interfaces";
 
 export interface IUser {
@@ -13,11 +14,22 @@ export interface IPhraseResponse{
 export interface ISearch{
   search: string;
 }
+export interface IAlert{
+  title: string;
+  message: string;
+  open: boolean;
+  type: string;
+}
+export interface IPhraseSelected{
+  phrase: IPhrases | null;
+  type: string;
+}
 export interface IGlobal{
   search: string;
   openModalCreatePhrase: boolean;
   openMobileMenu: boolean;
-  phraseSelected: IPhrases | null;
+  phraseSelected: IPhraseSelected;
+  openPopupAlert: IAlert;
 }
 export interface IStateRedux {
   user: IUser;
@@ -25,3 +37,5 @@ export interface IStateRedux {
   search: ISearch;
   global:IGlobal
 }
+
+export type AppDispatch = typeof store.dispatch;

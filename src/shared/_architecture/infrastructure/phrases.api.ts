@@ -6,7 +6,7 @@ export const apiGetPhrases = async (id:string): Promise<ResponseGetPhrases> => {
   
   try {
     const array: IPhrases[] = [];
-    const q = query(collection(db, "PHRASES"),where("userId", "==", id));
+    const q = query(collection(db, "PHRASES"),where("userId", "==", id),where("deleted", "==", false));
 
     const querySnapshot = await getDocs(q);
 

@@ -1,7 +1,7 @@
 import { IError } from "./error.interface";
 
 export interface IPhrases{
-  id?:string;
+  id?:string | null;
   description:string;
   userId:string;
   created:string;

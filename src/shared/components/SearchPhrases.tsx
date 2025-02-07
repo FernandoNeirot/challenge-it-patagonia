@@ -3,7 +3,8 @@ import InputComponent from "./form/Input";
 import { FiSearch } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { changeSearch } from "../../redux/sliders/global";
-import { AppDispatch } from "../../redux/store";
+import { AppDispatch } from "../_architecture/domain/state.interface";
+
 
 const SearchPhrases = () => {
   const dispatch = useDispatch<AppDispatch>();

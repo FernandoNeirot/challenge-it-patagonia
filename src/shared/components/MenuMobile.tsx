@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../redux/store";
+
 import PortalToMain from "./PortalToMain";
 import {
   changeMobileMenu,
@@ -10,6 +10,7 @@ import useAuth from "../../hooks/useAuth";
 import ButtonComponent from "./form/button";
 import { LOCAL_STORAGE } from "../utils/localStorage";
 import { useNavigate } from "react-router";
+import { AppDispatch } from "../_architecture/domain/state.interface";
 
 const MenuMobile = () => {
   const dispatch = useDispatch<AppDispatch>();
