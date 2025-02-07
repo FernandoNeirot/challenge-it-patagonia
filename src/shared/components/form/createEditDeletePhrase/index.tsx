@@ -34,6 +34,17 @@ const CreateEditDeletePhraseModal = () => {
     dispatch(changeModalCreatePhrases());
   };
   const handlePhrase = async () => {
+    if(phrase.trim().length === 0){
+      dispatch(
+        changePopupAlert({
+          open: true,
+          type: "error",
+          title: "Error",
+          message: `No ha ingresado una frase`,
+        })
+      );
+      return
+    }
     const request: IPhrases = {
       id: phraseSelected.phrase ? phraseSelected.phrase.id : null,
       category: phraseSelected.phrase
