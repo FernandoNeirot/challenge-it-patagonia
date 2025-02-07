@@ -15,12 +15,7 @@ export const apiGetPhrases = async (id:string): Promise<ResponseGetPhrases> => {
       data.id = doc.id;
       array.push(data as IPhrases);
     });
-    if (array.length === 0) {
-      return {
-        data: null,
-        error: { isError: true, status: 401, message: "Error de credenciales" },
-      };
-    }
+    
     return { data: array, error: null };
   } catch {
 
